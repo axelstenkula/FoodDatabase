@@ -36,13 +36,16 @@ namespace FoodDatabase
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
-            // var connection = "Data Source=blogging.db";
-            // services.AddDbContext<BloggingContext>
+            // SQL lite
+            // var connection = "Data Source=food.db";
+            // services.AddDbContext<FoodContext>
             // (options => options.UseSqlite(connection));
 
-            var connection = "Data Source=food.db";
+            // Mysql:
+            // Server=myServerAddress;Database=myDataBase;Uid=myUsername;Pwd=myPassword;
+            var connection = "InMemoryDb";
             services.AddDbContext<FoodContext>
-            (options => options.UseSqlite(connection));
+            (options => options.UseInMemoryDatabase(connection));
 
             services.AddScoped(typeof(IFoodRepository), typeof(FoodRepository));
             services.AddScoped(typeof(IFoodService), typeof(FoodService));

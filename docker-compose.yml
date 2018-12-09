@@ -1,0 +1,22 @@
+version: '2'
+
+services:
+  fooddatabase:
+    image: axelst/fooddatabase:backend_0.1.6
+    container_name: fooddatabase_backend
+    restart: always
+    ports:
+      - 9090:80
+  #  volumes:
+      # - "./data/appsettings.json:/application/appsettings.json"
+      # - "/data/docker/review_crossertech_com/data/data:/application/data"
+    logging:
+      driver: json-file
+      options:
+        max-size: "50m"
+        max-file: "2"
+    # networks:
+    #   crossertech-review:
+    #     aliases:
+    #       - crossertech-review
+
